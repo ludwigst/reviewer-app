@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="apple-mobile-web-app-title" content="LET Reviewer"/>
+  <meta name="theme-color" content="#ffffff"/>
+  <title>LET Reviewer</title>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+  <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- ONBOARDING -->
+    <div id="screen-onboarding" class="screen" style="justify-content:center;gap:20px">
+      <div>
+        <div class="title-lg">LET Reviewer</div>
+        <div class="subtitle" style="margin-top:4px">Your AI-powered board exam companion</div>
+      </div>
+      <div>
+        <div class="section-label">Your name</div>
+        <input type="text" id="user-name" placeholder="e.g. Maria Santos"/>
+      </div>
+      <div>
+        <div class="section-label">Exam track</div>
+        <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+          <button class="track-chip selected" data-track="Elementary" onclick="selectTrack(this)">Elementary</button>
+          <button class="track-chip" data-track="Secondary" onclick="selectTrack(this)">Secondary</button>
+        </div>
+      </div>
+      <div id="spec-section" class="hidden">
+        <div class="section-label">Specialization</div>
+        <select id="spec-select">
+          <option value="English">English</option>
+          <option value="Filipino">Filipino</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Biology">Biology</option>
+          <option value="Chemistry">Chemistry</option>
+          <option value="Physics">Physics</option>
+          <option value="Social Studies">Social Studies</option>
+          <option value="Values Education">Values Education</option>
+          <option value="MAPEH">MAPEH</option>
+          <option value="TLE">TLE</option>
+        </select>
+      </div>
+      <div>
+        <div class="section-label">Exam date (optional)</div>
+        <input type="date" id="exam-date"/>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="startApp()">
+        <i class="ti ti-arrow-right"></i> Get started
+      </button>
+    </div>
+
+    <!-- MAIN APP -->
+    <div id="main-app" class="hidden" style="flex:1;display:flex;flex-direction:column">
+
+      <div class="topbar">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="avatar" id="avatar-initials">MS</div>
+          <span class="topbar-title" id="topbar-name">Maria</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span id="topbar-track-badge" class="tag tag-gened">Elementary</span>
+          <span id="topbar-days" class="text-xs muted"></span>
+        </div>
+      </div>
+
+      <div id="content-area">
+
+        <!-- HOME -->
+        <div id="screen-home" class="screen">
+          <div>
+            <div class="title-md" id="greeting"></div>
+            <div class="text-xs muted" style="margin-top:2px" id="greeting-sub"></div>
+          </div>
+          <div class="grid-2">
+            <div class="stat-card"><div class="stat-val" id="stat-total">0</div><div class="stat-label">Questions answered</div></div>
+            <div class="stat-card"><div class="stat-val" id="stat-streak">0</div><div class="stat-label">Day streak</div></div>
+          </div>
+          <div class="card">
+            <div class="section-label" style="margin-bottom:8px">Component scores</div>
+            <div id="component-scores" style="display:flex;flex-direction:column;gap:8px"></div>
+          </div>
+          <div class="section-label">Start practicing</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <button class="btn btn-full row-btn" onclick="setModeAndGo('quick')">
+              <i class="ti ti-player-play" style="color:#1D9E75"></i>
+              <div style="text-align:left"><div class="btn-title">Quick practice</div><div class="btn-sub">10 random questions</div></div>
+            </button>
+            <button class="btn btn-full row-btn" onclick="setModeAndGo('topic')">
+              <i class="ti ti-target" style="color:#534AB7"></i>
+              <div style="text-align:left"><div class="btn-title">Topic drill</div><div class="btn-sub">Focus on one component</div></div>
+            </button>
+            <button class="btn btn-full row-btn" onclick="setModeAndGo('mock')">
+              <i class="ti ti-clock" style="color:#BA7517"></i>
+              <div style="text-align:left"><div class="btn-title">Mock exam</div><div class="btn-sub">20 items · simulates real exam pressure</div></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- MODE SELECT -->
+        <div id="screen-mode" class="screen hidden">
+          <div class="title-md">Choose component</div>
+          <div id="mode-components" style="display:flex;flex-direction:column;gap:7px"></div>
+          <div class="title-md">Difficulty</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="topic-pill selected" data-diff="mixed" onclick="selectDiff(this)">Mixed</button>
+            <button class="topic-pill" data-diff="easy" onclick="selectDiff(this)">Easy</button>
+            <button class="topic-pill" data-diff="medium" onclick="selectDiff(this)">Medium</button>
+            <button class="topic-pill" data-diff="hard" onclick="selectDiff(this)">Hard</button>
+          </div>
+          <div class="title-md">Mode</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="topic-pill" data-mode="quick" onclick="selectMode(this)">Quick (10 items)</button>
+            <button class="topic-pill" data-mode="mock" onclick="selectMode(this)">Mock (20 items)</button>
+          </div>
+          <div style="margin-top:auto;display:flex;flex-direction:column;gap:6px">
+            <button class="btn btn-primary btn-full" onclick="startQuiz()">
+              <i class="ti ti-player-play"></i> Start session
+            </button>
+            <button class="btn btn-full" onclick="goTo('screen-home')">Back</button>
+          </div>
+        </div>
+
+        <!-- QUIZ -->
+        <div id="screen-quiz" class="screen hidden" style="gap:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span class="text-sm muted" id="q-counter">Question 1 of 10</span>
+            <div style="display:flex;gap:5px;align-items:center">
+              <span id="q-diff-tag" class="tag"></span>
+              <span id="q-comp-tag" class="tag"></span>
+            </div>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="q-progress" style="width:10%"></div></div>
+          <div id="q-topic" class="text-xs muted"></div>
+          <div id="q-stem" class="q-stem"></div>
+          <div id="choices" style="display:flex;flex-direction:column;gap:7px"></div>
+          <div id="explanation-area" class="hidden" style="display:flex;flex-direction:column;gap:8px">
+            <div class="explanation-box" id="explanation-text"></div>
+            <button class="btn btn-primary btn-full" onclick="nextQuestion()">Next <i class="ti ti-arrow-right"></i></button>
+            <button class="btn btn-full" onclick="endSession()">End session</button>
+          </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div id="screen-results" class="screen hidden" style="gap:12px">
+          <div>
+            <div class="title-md" id="results-title"></div>
+            <div class="text-xs muted" id="results-sub"></div>
+          </div>
+          <div class="grid-2">
+            <div class="stat-card"><div class="stat-val" id="res-score">0%</div><div class="stat-label">Score</div></div>
+            <div class="stat-card"><div class="stat-val" id="res-correct">0/0</div><div class="stat-label">Correct</div></div>
+          </div>
+          <div class="card">
+            <div class="section-label" style="margin-bottom:6px">50% floor check</div>
+            <div id="floor-result" class="text-sm"></div>
+          </div>
+          <div class="card">
+            <div class="section-label" style="margin-bottom:6px">Weak areas</div>
+            <div id="weak-areas" class="text-sm muted"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <button class="btn btn-primary btn-full" onclick="goTo('screen-mode');resetQuiz()">Practice again</button>
+            <button class="btn btn-full" onclick="goTo('screen-home');resetQuiz()">Back to home</button>
+          </div>
+        </div>
+
+        <!-- PROGRESS -->
+        <div id="screen-progress" class="screen hidden">
+          <div class="title-md">Your progress</div>
+          <div class="grid-2">
+            <div class="stat-card"><div class="stat-val" id="prog-total">0</div><div class="stat-label">Total answered</div></div>
+            <div class="stat-card"><div class="stat-val" id="prog-acc">—</div><div class="stat-label">Overall accuracy</div></div>
+          </div>
+          <div class="card">
+            <div class="section-label" style="margin-bottom:8px">By component</div>
+            <div id="prog-components" style="display:flex;flex-direction:column;gap:10px"></div>
+          </div>
+          <div class="card">
+            <div class="section-label" style="margin-bottom:8px">Recent sessions</div>
+            <div id="prog-activity" class="text-sm muted">No sessions yet. Start practicing!</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bottom-nav">
+        <button class="nav-btn active" onclick="navTo('screen-home',this)"><i class="ti ti-home"></i>Home</button>
+        <button class="nav-btn" onclick="navTo('screen-mode',this)"><i class="ti ti-player-play"></i>Practice</button>
+        <button class="nav-btn" onclick="navTo('screen-progress',this)"><i class="ti ti-chart-bar"></i>Progress</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/questions.js"></script>
+  <script src="/app.js"></script>
+  <script>
+    // Helper wired to home screen buttons
+    function setModeAndGo(mode) {
+      state.selectedMode = mode;
+      document.querySelectorAll('[data-mode]').forEach(b => {
+        b.classList.toggle('selected', b.dataset.mode === mode);
+      });
+      goTo('screen-mode');
+    }
+  </script>
+</body>
+</html>
