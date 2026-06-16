@@ -21,12 +21,65 @@ const RESULTS_MESSAGES = [
 
 // ─── STATE ────────────────────────────────────────────────────────────────────
 
+// Durable fields (user, stats, history, collections) come from the persistence
+// store; quiz + selected* are ephemeral and never persisted.
 let state = {
-  user: { name:'', track:'Elementary', spec:'English', examDate:null },
-  stats: { total:0, correct:0, streak:0, sessions:[], byComponent:{ 'Gen Ed':{total:0,correct:0}, 'Prof Ed':{total:0,correct:0}, 'Specialization':{total:0,correct:0} } },
+  ...Store.defaults(),
   quiz: { component:'Gen Ed', difficulty:'mixed', mode:'quick', topicFilter:null, questions:[], usedIds:new Set(), current:0, sessionCorrect:0, sessionTotal:0, sessionWrong:[], totalQuestions:10 },
   selectedComponent:'Gen Ed', selectedDiff:'mixed', selectedMode:'quick',
 };
+
+// ─── PERSISTENCE ───────────────────────────────────────────────────────────────
+
+function persist() {
+  Store.save({
+    version: Store.VERSION,
+    user: state.user,
+    stats: state.stats,
+    history: state.history,
+    collections: state.collections,
+  });
+}
+
+// Local 'YYYY-MM-DD' key for the given date (defaults to now).
+function dayKey(d) {
+  d = d || new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+// True if `lastKey` is exactly the calendar day before `todayK`.
+function isYesterday(lastKey, todayK) {
+  const t = new Date(todayK + 'T00:00:00');
+  t.setDate(t.getDate() - 1);
+  return dayKey(t) === lastKey;
+}
+
+// Day-streak: +1 the first time the user is active on a new day that follows the
+// previous active day; reset to 1 after any gap; no-op if already counted today.
+function updateStreak() {
+  const today = dayKey();
+  const last = state.stats.lastActive;
+  if (last === today) {
+    if (!state.stats.streak) state.stats.streak = 1;
+    return;
+  }
+  state.stats.streak = (last && isYesterday(last, today)) ? (state.stats.streak || 0) + 1 : 1;
+  state.stats.lastActive = today;
+}
+
+// ─── BOOT ──────────────────────────────────────────────────────────────────────
+
+function init() {
+  const saved = Store.load();
+  state.user = saved.user;
+  state.stats = saved.stats;
+  state.history = saved.history;
+  state.collections = saved.collections;
+  state.version = saved.version;
+  if (Store.hasProfile(saved)) enterApp();
+}
+
+if (typeof window !== 'undefined') window.addEventListener('DOMContentLoaded', init);
 
 // ─── ONBOARDING ───────────────────────────────────────────────────────────────
 
@@ -38,22 +91,32 @@ function selectTrack(el) {
 }
 
 function startApp() {
-  const name = document.getElementById('user-name').value.trim() || 'Reviewer';
-  state.user.name = name;
+  state.user.name = document.getElementById('user-name').value.trim() || 'Reviewer';
   state.user.spec = document.getElementById('spec-select').value;
   const d = document.getElementById('exam-date').value;
-  state.user.examDate = d ? new Date(d) : null;
+  state.user.examDate = d || null; // stored as 'YYYY-MM-DD' string for JSON round-trip
+  persist();
+  enterApp();
+}
+
+// Reveal the main app, populate the chrome (avatar/topbar), count the day, and
+// land on Home. Used both after onboarding and on boot when a profile exists.
+function enterApp() {
+  const name = state.user.name || 'Reviewer';
   document.getElementById('screen-onboarding').classList.add('hidden');
   document.getElementById('main-app').classList.remove('hidden');
   document.getElementById('avatar-initials').textContent = name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
   document.getElementById('topbar-name').textContent = name.split(' ')[0];
   document.getElementById('topbar-track-badge').textContent = state.user.track;
   document.getElementById('topbar-track-badge').className = 'tag '+(state.user.track==='Elementary'?'tag-gened':'tag-spec');
+  document.getElementById('topbar-days').textContent = '';
   if (state.user.examDate) {
-    const days = Math.ceil((state.user.examDate - new Date()) / 864e5);
+    const days = Math.ceil((new Date(state.user.examDate) - new Date()) / 864e5);
     if (days > 0) document.getElementById('topbar-days').textContent = days+'d left';
   }
-  renderHome();
+  updateStreak();
+  persist();
+  goTo('screen-home');
 }
 
 // ─── HOME ─────────────────────────────────────────────────────────────────────
@@ -223,6 +286,7 @@ function selectAnswer(chosen, q) {
   else state.quiz.sessionWrong.push(q.topic);
   document.getElementById('explanation-text').textContent = (correct?'✓ Correct! ':'✗ Incorrect. ')+q.explanation;
   document.getElementById('explanation-area').classList.remove('hidden');
+  persist();
 }
 
 function nextQuestion() {
@@ -246,8 +310,9 @@ function endSession() {
     :'<span style="color:#E24B4A">✗ Below 50% floor</span> — In the real LET, below 50% on any component is an automatic fail, regardless of your overall average.';
   const weak = [...new Set(state.quiz.sessionWrong)];
   document.getElementById('weak-areas').textContent = weak.length?weak.join(' · '):'Nothing to flag this session!';
-  state.stats.sessions.push({ date:new Date(), score:pct, component:state.quiz.component, correct:state.quiz.sessionCorrect, total:state.quiz.sessionTotal });
-  if (!state.stats.streak) state.stats.streak=1;
+  state.stats.sessions.push({ date:new Date().toISOString(), score:pct, component:state.quiz.component, correct:state.quiz.sessionCorrect, total:state.quiz.sessionTotal });
+  updateStreak();
+  persist();
   goTo('screen-results');
 }
 

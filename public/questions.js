@@ -411,3 +411,22 @@ const SPEC_QUESTIONS = {
     {id:353,component:'Specialization',topic:'Physics - Electricity',difficulty:'hard',stem:'Using V=IR, if V=12V and R=4Ω, current I=?',choices:['3 A','8 A','16 A','48 A'],answer:0,explanation:'I=V/R=12/4=3 Amperes.'},
   ],
 };
+
+// ─── BACKFILL: topicGroup + bloom ──────────────────────────────────────────────
+// topicGroup is the high-level subject — the text before " - " in `topic`
+// (e.g. 'English - Grammar' → 'English'). It powers the component → topicGroup →
+// topic accordion. bloom (cognitive level) is reserved for later and defaults null.
+// Done in-file so every existing and future question is guaranteed to carry both.
+(function backfillQuestionMeta() {
+  function decorate(q) {
+    if (q.topicGroup === undefined) {
+      const sep = q.topic.indexOf(' - ');
+      q.topicGroup = sep === -1 ? q.topic : q.topic.slice(0, sep);
+    }
+    if (q.bloom === undefined) q.bloom = null;
+  }
+  if (typeof QUESTION_BANK !== 'undefined') QUESTION_BANK.forEach(decorate);
+  if (typeof SPEC_QUESTIONS !== 'undefined') {
+    Object.values(SPEC_QUESTIONS).forEach(arr => arr.forEach(decorate));
+  }
+})();
