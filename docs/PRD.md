@@ -118,18 +118,18 @@ or flat fills. New surfaces must reuse the established tokens in `public/style.c
 - **AC:** Reload preserves stats, history, collections, and skips onboarding. Streak increments once/day, resets after a gap.
 
 ### Sprint 1 — Progress Tracker (topic-level mastery)
-- [ ] Track `stats.byTopic` on every answer.
-- [ ] Dashboard/Progress: **component selector** → **topic accordion** with per-topic mastery % and mini floor-bars.
-- [ ] Mastery ring component on component headers; color thresholds (≥75 emerald, 50–74 amber, <50 red).
-- [ ] Keep + surface the **50% floor** per component prominently.
+- [x] Track `stats.byTopic` on every answer.
+- [x] Dashboard/Progress: **component selector** → **topic accordion** with per-topic mastery % and mini floor-bars.
+- [x] Mastery ring component on component headers; color thresholds (≥75 emerald, 50–74 amber, <50 red).
+- [x] Keep + surface the **50% floor** per component prominently.
 - Files: `public/app.js` (`renderProgress`, `renderHome`), `public/index.html`, `public/style.css`.
 - **AC:** Answering questions in a topic moves that topic's % and the component ring. Topics below 50% are visibly flagged.
 
 ### Sprint 2 — Practice Test flow upgrade + Rationale Review
-- [ ] Launch tests **from a topic** (not just component), pre-pick N items from that topic pool.
-- [ ] Quiz top bar: question counter + (optional) **timer pill**; show **Bloom tag** when present.
-- [ ] New **post-test Review screen**: list every item, your answer vs. correct (color-coded), full rationale, and a per-item **Bookmark** button.
-- [ ] Keep optional inline "instant feedback" mode as a toggle (Practice) vs. review-at-end (Exam).
+- [x] Launch tests **from a topic** (not just component), pre-pick N items from that topic pool.
+- [x] Quiz top bar: question counter + (optional) **timer pill**; show **Bloom tag** when present.
+- [x] New **post-test Review screen**: list every item, your answer vs. correct (color-coded), full rationale, and a per-item **Bookmark** button.
+- [x] Keep optional inline "instant feedback" mode as a toggle (Practice) vs. review-at-end (Exam).
 - Files: `public/app.js`, `public/index.html`, `public/style.css`.
 - **AC:** Finishing a test opens a review where each question's correctness + rationale is visible and bookmarkable.
 
