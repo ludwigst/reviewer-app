@@ -1,4 +1,5 @@
 import { getAllQuestions } from "@/lib/question-bank";
+import { getNleSubject, isNleSubject, nleSubjectIds } from "@/lib/nle-taxonomy";
 import { SPEC_QUESTIONS } from "@/lib/questions-local";
 import type {
   ComponentName,
@@ -14,6 +15,8 @@ const LET_COMPONENTS: ComponentName[] = ["Gen Ed", "Prof Ed", "Specialization"];
 
 export function getComponents(track: Track): ComponentName[] {
   const fromBank = [...new Set(getAllQuestions().map((q) => q.component))];
+  const isNursing = fromBank.some((c) => c.startsWith("Nursing Practice") || c === "PALMER");
+  if (isNursing) return nleSubjectIds();
   const isLet = fromBank.some((c) => LET_COMPONENTS.includes(c));
   if (fromBank.length && !isLet) return fromBank.sort();
   return track === "Elementary"
@@ -38,18 +41,27 @@ export function getPool(
   component: ComponentName,
   difficulty: Difficulty,
   spec: string,
-  topic?: string | null
+  topic?: string | null,
+  topicGroup?: string | null,
+  subtopic?: string | null
 ): Question[] {
   let bank = getComponentPool(component, spec);
   if (difficulty !== "mixed") bank = bank.filter((q) => q.difficulty === difficulty);
-  if (topic) bank = bank.filter((q) => q.topic === topic);
+  if (topicGroup) bank = bank.filter((q) => q.topicGroup === topicGroup);
+  if (subtopic) bank = bank.filter((q) => q.subtopic === subtopic);
+  else if (topic) bank = bank.filter((q) => q.topic === topic);
   return bank;
 }
 
 export function getTaxonomy(component: ComponentName, spec: string) {
+  if (isNleSubject(component)) {
+    const out: Record<string, string[]> = {};
+    for (const topic of getNleSubject(component).topics) out[topic.name] = topic.subtopics;
+    return out;
+  }
   const groups: Record<string, Set<string>> = {};
   for (const q of getComponentPool(component, spec)) {
-    (groups[q.topicGroup] ??= new Set()).add(q.topic);
+    (groups[q.topicGroup] ??= new Set()).add(q.subtopic || q.topic);
   }
   const out: Record<string, string[]> = {};
   for (const g of Object.keys(groups).sort()) {

@@ -7,6 +7,7 @@ import { useReviewer } from "@/components/reviewer-provider";
 import { HomeScreen } from "@/components/screens/home-screen";
 import { ModeScreen } from "@/components/screens/mode-screen";
 import { OnboardingScreen } from "@/components/screens/onboarding-screen";
+import { PracticeScreen } from "@/components/screens/practice-screen";
 import { ProgressScreen } from "@/components/screens/progress-screen";
 import { QuizScreen } from "@/components/screens/quiz-screen";
 import { ResultsScreen } from "@/components/screens/results-screen";
@@ -70,6 +71,7 @@ export function AppShell() {
         <div className="flex flex-col gap-3.5 px-5 py-6 md:px-9">
           {screen === "home" ? <HomeScreen /> : null}
           {screen === "mode" ? <ModeScreen /> : null}
+          {screen === "practice" ? <PracticeScreen /> : null}
           {screen === "quiz" ? <QuizScreen /> : null}
           {screen === "results" ? <ResultsScreen /> : null}
           {screen === "review" ? <ReviewScreen /> : null}
@@ -77,10 +79,11 @@ export function AppShell() {
         </div>
       </div>
 
-      {screen === "home" || screen === "mode" || screen === "progress" ? (
+      {screen === "home" || screen === "mode" || screen === "progress" || screen === "practice" ? (
         <nav className="sticky bottom-0 z-10 flex border-t border-border bg-card/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-md">
           {NAV.map((item) => {
-            const active = screen === item.id;
+            const active =
+              screen === item.id || (item.id === "home" && screen === "practice");
             const Icon = item.icon;
             return (
               <button

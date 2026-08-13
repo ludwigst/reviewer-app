@@ -4,14 +4,23 @@ import { pctColor } from "@/lib/questions";
 export function MasteryRing({
   pct,
   size = 56,
+  compact = false,
 }: {
   pct: number | null | undefined;
   size?: number;
+  compact?: boolean;
 }) {
   const color = pctColor(pct);
   const p = pct === null || pct === undefined ? 0 : pct;
-  const label = pct === null || pct === undefined ? "—" : `${pct}%`;
-  const fontSize = Math.round(size * 0.27);
+  const label =
+    pct === null || pct === undefined
+      ? compact
+        ? "0"
+        : "—"
+      : compact
+        ? String(pct)
+        : `${pct}%`;
+  const fontSize = Math.round(size * (compact ? 0.34 : 0.27));
 
   return (
     <div

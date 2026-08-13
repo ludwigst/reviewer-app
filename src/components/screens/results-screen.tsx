@@ -69,7 +69,7 @@ export function ResultsScreen() {
           className="h-12 w-full rounded-xl"
           onClick={() => {
             resetQuiz();
-            goTo("mode");
+            goTo(quiz.mode === "topic" ? "practice" : "mode");
           }}
         >
           Practice again
