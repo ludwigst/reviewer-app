@@ -24,6 +24,15 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
 
 Get a free Gemini key at https://aistudio.google.com. Env files are gitignored (except `.env.example`).
 
+## Agent plugins
+
+```bash
+npx plugins add vercel/vercel-plugin
+npx skills add vercel/vercel-plugin -y
+```
+
+Project enablement is in `.claude/settings.json` (`vercel-plugin@vercel`). Copied skills are under `.agents/skills/` (Next.js, env vars, deploy, Vercel CLI, etc.).
+
 ## Architecture
 
 Mobile-first PWA for Filipino teacher-licensing exam (LET) practice. Stack: Next.js App Router + React client state + shadcn/ui.
