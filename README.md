@@ -54,14 +54,16 @@ npm run db:push
 
 That applies:
 
-- `supabase/migrations/20260813130532_reviewer_saves.sql`
-- `supabase/migrations/20260813130931_questions.sql` (creates `questions` and seeds 20 NLE Nursing Practice I items)
+- `supabase/migrations/20260813133505_reviewer_saves.sql`
+- `supabase/migrations/20260813133517_questions.sql` (creates `questions` and seeds 20 NLE Nursing Practice I items)
 
 ### SQL Editor fallback
 
 If you prefer the dashboard, run those two files in the [SQL Editor](https://supabase.com/dashboard/project/ljkxgryzrfunlbnbymga/sql/new).
 
-Until migrations are applied, the app still works: progress stays local, and the 20 nursing items load from `src/data/nursing-questions.json`. Sync/load errors log `Supabase … skipped` in the browser console.
+MCP config is in `.cursor/mcp.json` (scoped to this project). Authenticate Cloud Agents at [cursor.com/agents](https://cursor.com/agents) → MCP → Connect on Supabase.
+
+The hosted project already has `reviewer_saves` and 20 `questions` rows. If you clone a fresh database, apply the migrations above.
 
 ## Run
 

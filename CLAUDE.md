@@ -24,7 +24,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://ljkxgryzrfunlbnbymga.supabase.co
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
 ```
 
-CLI (not for the browser) needs `SUPABASE_ACCESS_TOKEN` and `SUPABASE_DB_PASSWORD` to push migrations:
+CLI (not for the browser) needs `SUPABASE_ACCESS_TOKEN` and `SUPABASE_DB_PASSWORD` to push migrations. MCP config is in `.cursor/mcp.json` / `.mcp.json` (project `ljkxgryzrfunlbnbymga`).
 
 ```bash
 npm run db:link
