@@ -12,6 +12,13 @@ import {
 import { GREETINGS, pickRandom, RESULTS_MESSAGES } from "@/lib/copy";
 import { buildQuiz, emptyQuiz } from "@/lib/quiz";
 import { bumpTopic, hasProfile } from "@/lib/store";
+import { getComponents } from "@/lib/questions";
+import {
+  getQuestionsVersion,
+  getServerQuestionsVersion,
+  loadRemoteQuestions,
+  subscribeQuestions,
+} from "@/lib/question-bank";
 import {
   getServerStoreSnapshot,
   getStoreSnapshot,
@@ -79,21 +86,39 @@ export function ReviewerProvider({ children }: { children: React.ReactNode }) {
     isStoreHydrated,
     () => false
   );
+  useSyncExternalStore(
+    subscribeQuestions,
+    getQuestionsVersion,
+    getServerQuestionsVersion
+  );
   const [screenOverride, setScreenOverride] = useState<ScreenId | null>(null);
   const [quiz, setQuiz] = useState<QuizState>(emptyQuiz);
   const [lastReview, setLastReview] = useState<ReviewPayload | null>(null);
-  const [selectedComponent, setSelectedComponent] = useState<ComponentName>("Gen Ed");
+  const [componentOverride, setComponentOverride] = useState<ComponentName | null>(null);
   const [selectedDiff, setSelectedDiff] = useState<Difficulty>("mixed");
   const [selectedMode, setSelectedMode] = useState<QuizMode>("quick");
   const [selectedInstant, setSelectedInstant] = useState(true);
-  const [selectedProgressComponent, setSelectedProgressComponent] =
-    useState<ComponentName>("Gen Ed");
+  const [progressComponentOverride, setProgressComponentOverride] =
+    useState<ComponentName | null>(null);
   const [greeting] = useState(() => pickRandom(GREETINGS));
   const [resultCopy, setResultCopy] = useState<{ main: string; sub: string } | null>(null);
 
   useEffect(() => {
     hydrateStore();
+    void loadRemoteQuestions();
   }, []);
+
+  const components = getComponents(persisted.user.track);
+  const selectedComponent =
+    (componentOverride && components.includes(componentOverride)
+      ? componentOverride
+      : components[0]) || "Gen Ed";
+  const selectedProgressComponent =
+    (progressComponentOverride && components.includes(progressComponentOverride)
+      ? progressComponentOverride
+      : components[0]) || "Gen Ed";
+  const setSelectedComponent = setComponentOverride;
+  const setSelectedProgressComponent = setProgressComponentOverride;
 
   const screen: ScreenId =
     screenOverride ?? (hydrated && hasProfile(persisted) ? "home" : "onboarding");
@@ -347,6 +372,8 @@ export function ReviewerProvider({ children }: { children: React.ReactNode }) {
       selectedInstant,
       selectedMode,
       selectedProgressComponent,
+      setSelectedComponent,
+      setSelectedProgressComponent,
       setUser,
       startQuizFromMode,
       startTopicDrill,
