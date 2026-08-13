@@ -6,33 +6,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 npm install      # install dependencies (first time)
-npm start        # run the server at http://localhost:3000
+npm run dev      # Next.js dev server at http://localhost:3000
+npm run build    # production build
+npm start        # serve the production build
+npm run lint     # eslint
 ```
-
-No test runner or linter is configured.
 
 ## Environment
 
-Requires a `.env` file in the project root:
+Requires a `.env.local` file in the project root (see `.env.example`):
+
 ```
 GEMINI_API_KEY=your_key_here
 ```
 
-Get a free key at https://aistudio.google.com. The `.env` is gitignored.
+Get a free key at https://aistudio.google.com. Env files are gitignored.
 
 ## Architecture
 
-This is a mobile-first PWA (installable to phone home screen) for Filipino teacher-licensing exam (LET) practice. The stack is a thin Node/Express backend serving a vanilla JS single-page app.
+Mobile-first PWA for Filipino teacher-licensing exam (LET) practice. Stack: Next.js App Router + React client state + shadcn/ui.
 
-**Backend (`server.js`)** — one route only: `POST /api/ask` proxies requests to the Gemini 2.0 Flash API. Its sole purpose is to keep the API key off the client. It normalizes Gemini's response shape into `{ content: [{ text }] }` before returning it.
+**API (`src/app/api/ask/route.ts`)** — `POST /api/ask` proxies prompts to Gemini 2.0 Flash and keeps the API key off the client. Response shape: `{ content: [{ text }] }`.
 
-**Frontend (`public/`)** — entirely vanilla JS with no build step:
-- `index.html` — single HTML file with all screens pre-rendered as `<div id="screen-*">` blocks, shown/hidden via the `hidden` CSS class. Screen IDs: `screen-onboarding`, `screen-home`, `screen-mode`, `screen-quiz`, `screen-results`, `screen-progress`.
-- `app.js` — all application logic. Global `state` object holds everything (user profile, cumulative stats, active quiz). State is **not persisted** — it resets on page reload. Navigation is handled by `goTo(id)` / `navTo(id, btn)`. The quiz engine pre-picks all questions at session start (no mid-session repeats).
-- `questions.js` — static question bank loaded as globals. `QUESTION_BANK` holds Gen Ed and Prof Ed questions; `SPEC_QUESTIONS` is a keyed object for Secondary specializations. Each question: `{id, component, topic, difficulty, stem, choices[], answer, explanation}` where `answer` is a zero-based index into `choices`.
+**App shell (`src/components/app-shell.tsx`)** — client-side screen router (onboarding, home, mode, quiz, results, review, progress). Durable state lives in `localStorage` via `src/lib/store.ts` (`letReviewer.v1`). Quiz state is ephemeral.
 
-**Question pool selection** (`getPool` in `app.js`): filters `QUESTION_BANK` by `component` and `difficulty`, or pulls from `SPEC_QUESTIONS[state.user.spec]` for Specialization. `pickQuestion` prefers unseen questions; resets the used-set when the pool is exhausted.
+**Question bank (`src/data/questions.json`, loaded in `src/lib/questions.ts`)** — Gen Ed + Prof Ed in `QUESTION_BANK`; `SPEC_QUESTIONS` keyed by Secondary specialization. Each item: `{id, component, topic, topicGroup, difficulty, stem, choices[], answer, explanation, bloom}` where `answer` is a zero-based index into `choices`.
 
-**LET exam structure** reflected in the app: three components (Gen Ed, Prof Ed, Specialization), a 50% floor per component (scoring below 50% on any component fails the exam regardless of overall average). Elementary track has no Specialization component.
+**Quiz engine (`src/lib/quiz.ts`)** — `getPool` filters by component/difficulty (or spec for Specialization). Questions are pre-picked at session start (no mid-session repeats). Mock mode is 20 items and timed (~60s/item); practice is 10 items.
 
-**PWA** — `manifest.json` + Apple/Android meta tags in `index.html` enable "Add to Home Screen" installation. The app is designed to be accessed from a phone over the same local network as the laptop running the server.
+**LET exam structure** — three components (Gen Ed, Prof Ed, Specialization), 50% floor per component. Elementary track has no Specialization.
+
+**UI** — shadcn/ui primitives in `src/components/ui`, study-journal tokens in `src/app/globals.css` (Fraunces display + Hanken Grotesk body, cream paper, emerald ink).
