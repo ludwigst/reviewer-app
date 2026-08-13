@@ -28,13 +28,15 @@ GEMINI_API_KEY=your_key_here
 
 ## Supabase
 
-Progress is cached in `localStorage` and synced to `public.reviewer_saves`.
+Progress is cached in `localStorage` and synced to `public.reviewer_saves`. The quiz bank lives in `public.questions`.
 
 1. Confirm `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` in `.env.local`.
-2. In the [SQL Editor](https://supabase.com/dashboard/project/ljkxgryzrfunlbnbymga/sql/new), run the migration at `supabase/migrations/20260813130532_reviewer_saves.sql`.
-3. Reload the app and complete onboarding — a row keyed by `device_id` should appear in Table Editor.
+2. In the [SQL Editor](https://supabase.com/dashboard/project/ljkxgryzrfunlbnbymga/sql/new), run these migrations in order:
+   - `supabase/migrations/20260813130532_reviewer_saves.sql`
+   - `supabase/migrations/20260813130931_questions.sql` (creates `questions` and seeds 20 NLE Nursing Practice I items from `data/nursing_question_bank.xlsx`)
+3. Reload the app — Practice should list **Nursing Practice I**. Table Editor should show 20 `questions` rows.
 
-Until that migration is applied, the app still works offline; sync attempts log `Supabase pull/push skipped` in the browser console.
+Until those migrations are applied, the app still works: progress stays local, and the 20 nursing items load from `src/data/nursing-questions.json`. Sync/load errors log `Supabase … skipped` in the browser console.
 
 ## Run
 

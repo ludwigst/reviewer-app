@@ -32,9 +32,9 @@ Mobile-first PWA for Filipino teacher-licensing exam (LET) practice. Stack: Next
 
 **App shell (`src/components/app-shell.tsx`)** — client-side screen router (onboarding, home, mode, quiz, results, review, progress). Durable state is cached in `localStorage` (`src/lib/store.ts`, key `letReviewer.v1`) and synced to Supabase table `public.reviewer_saves` via `src/lib/supabase/persist.ts`. Quiz state is ephemeral.
 
-**Supabase** — browser/server clients from the shadcn `@supabase/supabase-client-nextjs` block live in `src/lib/supabase/`. `src/proxy.ts` refreshes the Auth session on each request but does not require login. Apply `supabase/migrations/20260813130532_reviewer_saves.sql` in the project SQL editor before cloud sync will succeed.
+**Supabase** — browser/server clients from the shadcn `@supabase/supabase-client-nextjs` block live in `src/lib/supabase/`. `src/proxy.ts` refreshes the Auth session on each request but does not require login. Apply `supabase/migrations/*.sql` in the project SQL editor. `public.questions` is the quiz bank (seeded from the NLE nursing workbook); `public.reviewer_saves` stores per-device progress.
 
-**Question bank (`src/data/questions.json`, loaded in `src/lib/questions.ts`)** — Gen Ed + Prof Ed in `QUESTION_BANK`; `SPEC_QUESTIONS` keyed by Secondary specialization. Each item: `{id, component, topic, topicGroup, difficulty, stem, choices[], answer, explanation, bloom}` where `answer` is a zero-based index into `choices`.
+**Question bank** — the app loads `public.questions` from Supabase (`src/lib/question-bank.ts`). If that table is empty/unavailable it falls back to `src/data/nursing-questions.json` (20 Nursing Practice I items), then to the legacy LET bank in `src/data/questions.json`. Quiz shape: `{id, component, topic, topicGroup, difficulty, stem, choices[], answer, explanation, bloom}` where `answer` is a zero-based index into `choices`.
 
 **Quiz engine (`src/lib/quiz.ts`)** — `getPool` filters by component/difficulty (or spec for Specialization). Questions are pre-picked at session start (no mid-session repeats). Mock mode is 20 items and timed (~60s/item); practice is 10 items.
 
