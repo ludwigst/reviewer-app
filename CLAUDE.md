@@ -10,6 +10,8 @@ npm run dev      # Next.js dev server at http://localhost:3000
 npm run build    # production build
 npm start        # serve the production build
 npm run lint     # eslint
+npm run db:link  # link CLI to project ljkxgryzrfunlbnbymga (needs SUPABASE_ACCESS_TOKEN)
+npm run db:push  # apply supabase/migrations to the linked remote DB
 ```
 
 ## Environment
