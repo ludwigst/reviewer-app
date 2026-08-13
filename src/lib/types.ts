@@ -1,6 +1,6 @@
 export type Track = "Elementary" | "Secondary";
 
-export type ComponentName = "Gen Ed" | "Prof Ed" | "Specialization";
+export type ComponentName = string;
 
 export type Difficulty = "easy" | "medium" | "hard" | "mixed";
 

@@ -119,5 +119,7 @@ function toneFor(c: ComponentName) {
 function subtitleFor(c: ComponentName, spec: string) {
   if (c === "Gen Ed") return "English, Filipino, Math, Science, Araling Panlipunan";
   if (c === "Prof Ed") return "Child dev, Assessment, Curriculum, Ed Tech...";
-  return `${spec} board content`;
+  if (c.startsWith("Nursing Practice")) return "Community health · NLE";
+  if (c === "Specialization") return `${spec} board content`;
+  return "Board exam content";
 }

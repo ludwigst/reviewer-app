@@ -1,4 +1,5 @@
-import data from "@/data/questions.json";
+import { getAllQuestions } from "@/lib/question-bank";
+import { SPEC_QUESTIONS } from "@/lib/questions-local";
 import type {
   ComponentName,
   Difficulty,
@@ -7,10 +8,14 @@ import type {
   UserProfile,
 } from "@/lib/types";
 
-export const QUESTION_BANK = data.QUESTION_BANK as Question[];
-export const SPEC_QUESTIONS = data.SPEC_QUESTIONS as Record<string, Question[]>;
+export { QUESTION_BANK, SPEC_QUESTIONS } from "@/lib/questions-local";
+
+const LET_COMPONENTS: ComponentName[] = ["Gen Ed", "Prof Ed", "Specialization"];
 
 export function getComponents(track: Track): ComponentName[] {
+  const fromBank = [...new Set(getAllQuestions().map((q) => q.component))];
+  const isLet = fromBank.some((c) => LET_COMPONENTS.includes(c));
+  if (fromBank.length && !isLet) return fromBank.sort();
   return track === "Elementary"
     ? ["Gen Ed", "Prof Ed"]
     : ["Gen Ed", "Prof Ed", "Specialization"];
@@ -21,9 +26,12 @@ export function componentLabel(component: ComponentName, spec: string) {
 }
 
 export function getComponentPool(component: ComponentName, spec: string): Question[] {
-  return component === "Specialization"
-    ? SPEC_QUESTIONS[spec] ?? []
-    : QUESTION_BANK.filter((q) => q.component === component);
+  const all = getAllQuestions();
+  const isLet = all.some((q) => LET_COMPONENTS.includes(q.component));
+  if (component === "Specialization" && isLet) {
+    return SPEC_QUESTIONS[spec] || [];
+  }
+  return all.filter((q) => q.component === component);
 }
 
 export function getPool(

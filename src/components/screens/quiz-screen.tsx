@@ -129,6 +129,6 @@ function difficultyTone(d: "easy" | "medium" | "hard") {
   return d;
 }
 
-function componentTone(c: "Gen Ed" | "Prof Ed" | "Specialization") {
+function componentTone(c: string) {
   return c === "Gen Ed" ? "gened" : c === "Prof Ed" ? "profed" : "spec";
 }
