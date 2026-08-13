@@ -54,7 +54,9 @@ export function QuizScreen() {
         value={((quiz.current + 1) / quiz.totalQuestions) * 100}
         className="h-1.5 bg-muted"
       />
-      <div className="text-[11.5px] text-muted-foreground">{q.topic}</div>
+      <div className="text-[11.5px] text-muted-foreground">
+        {[q.topicGroup, q.subtopic].filter(Boolean).join(" · ")}
+      </div>
       <div className="font-heading min-h-14 text-[21px] leading-[1.4] font-medium tracking-tight">
         {q.stem}
       </div>

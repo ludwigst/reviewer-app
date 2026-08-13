@@ -7,6 +7,8 @@ export function emptyQuiz(): QuizState {
     difficulty: "mixed",
     mode: "quick",
     topic: null,
+    topicGroup: null,
+    subtopic: null,
     instant: true,
     questions: [],
     current: 0,
@@ -24,9 +26,11 @@ export function buildQuiz(opts: BeginQuizOpts, spec: string): QuizState | { erro
   const difficulty = opts.difficulty || "mixed";
   const mode = opts.mode || "quick";
   const topic = opts.topic || null;
+  const topicGroup = opts.topicGroup || null;
+  const subtopic = opts.subtopic || null;
   const instant = opts.instant !== undefined ? opts.instant : mode !== "mock";
   const totalQ = mode === "mock" ? 20 : 10;
-  const pool = getPool(component, difficulty, spec, topic);
+  const pool = getPool(component, difficulty, spec, topic, topicGroup, subtopic);
 
   if (pool.length === 0) {
     return {
@@ -42,11 +46,16 @@ export function buildQuiz(opts: BeginQuizOpts, spec: string): QuizState | { erro
     return q;
   }).filter((q): q is NonNullable<typeof q> => Boolean(q));
 
+  const timerRemaining =
+    mode === "mock" ? totalQ * 60 : mode === "topic" ? 12 * 60 : null;
+
   return {
     component,
     difficulty,
     mode,
     topic,
+    topicGroup,
+    subtopic,
     instant,
     questions,
     current: 0,
@@ -55,7 +64,7 @@ export function buildQuiz(opts: BeginQuizOpts, spec: string): QuizState | { erro
     sessionTotal: 0,
     sessionWrong: [],
     totalQuestions: questions.length,
-    timerRemaining: mode === "mock" ? totalQ * 60 : null,
+    timerRemaining,
   };
 }
 

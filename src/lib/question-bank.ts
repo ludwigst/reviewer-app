@@ -1,7 +1,13 @@
 import nursingSeed from "@/data/nursing-questions.json";
+import { mapQuestionToNle } from "@/lib/nle-taxonomy";
 import { createClient } from "@/lib/supabase/client";
 import { QUESTION_BANK, SPEC_QUESTIONS } from "@/lib/questions-local";
 import type { Question } from "@/lib/types";
+
+function withNleTaxonomy(q: Question): Question {
+  const mapped = mapQuestionToNle(q);
+  return { ...q, ...mapped };
+}
 
 type RemoteQuestionRow = {
   id: number;
@@ -12,6 +18,7 @@ type RemoteQuestionRow = {
   component: string;
   topic: string;
   topic_group: string;
+  subtopic?: string | null;
   difficulty: "easy" | "medium" | "hard";
   bloom: string | null;
 };
@@ -22,6 +29,7 @@ function mapRow(row: RemoteQuestionRow): Question {
     component: row.component,
     topic: row.topic,
     topicGroup: row.topic_group,
+    subtopic: row.subtopic ?? row.topic,
     difficulty: row.difficulty,
     stem: row.stem,
     choices: row.choices,
@@ -41,6 +49,7 @@ function nursingFallback(): Question[] {
     component: string;
     topic: string;
     topic_group: string;
+    subtopic?: string | null;
     difficulty: "easy" | "medium" | "hard";
     bloom: string | null;
   }>).map((row) => ({
@@ -48,6 +57,7 @@ function nursingFallback(): Question[] {
     component: row.component,
     topic: row.topic,
     topicGroup: row.topic_group,
+    subtopic: row.subtopic ?? row.topic,
     difficulty: row.difficulty,
     stem: row.stem,
     choices: row.choices,
@@ -84,9 +94,14 @@ export function getServerQuestionsVersion() {
 }
 
 export function getAllQuestions(): Question[] {
-  if (remoteQuestions && remoteQuestions.length) return remoteQuestions;
-  const nursing = nursingFallback();
-  return nursing.length ? nursing : letFallback();
+  const raw =
+    remoteQuestions && remoteQuestions.length
+      ? remoteQuestions
+      : (() => {
+          const nursing = nursingFallback();
+          return nursing.length ? nursing : letFallback();
+        })();
+  return raw.map(withNleTaxonomy);
 }
 
 export function setRemoteQuestions(questions: Question[]) {
@@ -103,7 +118,7 @@ export async function loadRemoteQuestions() {
   const { data, error } = await supabase
     .from("questions")
     .select(
-      "id, stem, choices, answer, explanation, component, topic, topic_group, difficulty, bloom"
+      "id, stem, choices, answer, explanation, component, topic, topic_group, subtopic, difficulty, bloom"
     )
     .order("id");
 

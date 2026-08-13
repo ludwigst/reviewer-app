@@ -48,6 +48,7 @@ type ReviewerContextValue = {
   collections: Collection[];
   quiz: QuizState;
   lastReview: ReviewPayload | null;
+  history: ReviewPayload[];
   selectedComponent: ComponentName;
   selectedDiff: Difficulty;
   selectedMode: QuizMode;
@@ -65,6 +66,9 @@ type ReviewerContextValue = {
   setSelectedProgressComponent: (c: ComponentName) => void;
   startQuizFromMode: () => string | null;
   startTopicDrill: (component: ComponentName, topic: string) => string | null;
+  openPractice: (component: ComponentName, topicGroup: string, subtopic: string) => void;
+  startPractice: () => string | null;
+  practiceTarget: { component: ComponentName; topicGroup: string; subtopic: string } | null;
   selectAnswer: (choice: number) => void;
   nextQuestion: () => void;
   endSession: () => void;
@@ -100,6 +104,11 @@ export function ReviewerProvider({ children }: { children: React.ReactNode }) {
   const [selectedInstant, setSelectedInstant] = useState(true);
   const [progressComponentOverride, setProgressComponentOverride] =
     useState<ComponentName | null>(null);
+  const [practiceTarget, setPracticeTarget] = useState<{
+    component: ComponentName;
+    topicGroup: string;
+    subtopic: string;
+  } | null>(null);
   const [greeting] = useState(() => pickRandom(GREETINGS));
   const [resultCopy, setResultCopy] = useState<{ main: string; sub: string } | null>(null);
 
@@ -172,6 +181,27 @@ export function ReviewerProvider({ children }: { children: React.ReactNode }) {
     },
     [begin]
   );
+
+  const openPractice = useCallback(
+    (component: ComponentName, topicGroup: string, subtopic: string) => {
+      setPracticeTarget({ component, topicGroup, subtopic });
+      setScreenOverride("practice");
+    },
+    []
+  );
+
+  const startPractice = useCallback(() => {
+    if (!practiceTarget) return "Pick a subtopic first.";
+    return begin({
+      component: practiceTarget.component,
+      difficulty: "mixed",
+      mode: "topic",
+      topic: practiceTarget.subtopic,
+      topicGroup: practiceTarget.topicGroup,
+      subtopic: practiceTarget.subtopic,
+      instant: true,
+    });
+  }, [begin, practiceTarget]);
 
   const selectAnswer = useCallback((choice: number) => {
     setQuiz((q) => {
@@ -323,6 +353,7 @@ export function ReviewerProvider({ children }: { children: React.ReactNode }) {
       collections: persisted.collections,
       quiz,
       lastReview,
+      history: persisted.history,
       selectedComponent,
       selectedDiff,
       selectedMode,
@@ -343,6 +374,9 @@ export function ReviewerProvider({ children }: { children: React.ReactNode }) {
       setSelectedProgressComponent,
       startQuizFromMode,
       startTopicDrill,
+      openPractice,
+      startPractice,
+      practiceTarget,
       selectAnswer,
       nextQuestion,
       endSession,
@@ -359,7 +393,9 @@ export function ReviewerProvider({ children }: { children: React.ReactNode }) {
       isBookmarked,
       lastReview,
       nextQuestion,
+      openPractice,
       persisted.collections,
+      persisted.history,
       persisted.stats,
       persisted.user,
       quiz,
@@ -375,9 +411,11 @@ export function ReviewerProvider({ children }: { children: React.ReactNode }) {
       setSelectedComponent,
       setSelectedProgressComponent,
       setUser,
+      startPractice,
       startQuizFromMode,
       startTopicDrill,
       toggleBookmark,
+      practiceTarget,
     ]
   );
 

@@ -13,13 +13,15 @@ export type ScreenId =
   | "quiz"
   | "results"
   | "review"
-  | "progress";
+  | "progress"
+  | "practice";
 
 export type Question = {
   id: number;
   component: ComponentName;
   topic: string;
   topicGroup: string;
+  subtopic: string;
   difficulty: Exclude<Difficulty, "mixed">;
   stem: string;
   choices: string[];
@@ -87,6 +89,8 @@ export type QuizState = {
   difficulty: Difficulty;
   mode: QuizMode;
   topic: string | null;
+  topicGroup: string | null;
+  subtopic: string | null;
   instant: boolean;
   questions: Question[];
   current: number;
@@ -103,5 +107,7 @@ export type BeginQuizOpts = {
   difficulty?: Difficulty;
   mode?: QuizMode;
   topic?: string | null;
+  topicGroup?: string | null;
+  subtopic?: string | null;
   instant?: boolean;
 };
