@@ -1,0 +1,622 @@
+[
+  {
+    "source_id": 1,
+    "stem": "Nurse Santos is teaching a client newly diagnosed with pulmonary tuberculosis about the DOTS regimen before discharge. Which statement by the client indicates a need for further teaching?",
+    "choices": [
+      "I should cover my mouth when I cough until my doctor says I'm no longer contagious.",
+      "I can stop my medicines once my cough goes away.",
+      "I need a treatment partner to watch me take my medicine every dose.",
+      "I need to return for sputum exams to check my progress."
+    ],
+    "answer": 1,
+    "explanation": "Needs correction — DOTS requires completing the full prescribed course (about 6 months for the standard regimen) even after symptoms resolve; stopping early risks relapse and multidrug-resistant TB.",
+    "rationales": [
+      "Correct infection-control practice; covering the mouth while coughing reduces droplet spread until the client is confirmed noninfectious, so this statement does not need correction.",
+      "Needs correction — DOTS requires completing the full prescribed course (about 6 months for the standard regimen) even after symptoms resolve; stopping early risks relapse and multidrug-resistant TB.",
+      "Correct understanding — a treatment partner (health worker or trained community supporter) observing each dose is the core of the DOTS strategy per the NTP Manual of Procedures.",
+      "Correct understanding — follow-up sputum smear microscopy monitors treatment response and confirms conversion to noninfectious status."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Communicable Disease Control - Tuberculosis - DOTS",
+    "topic_group": "Communicable Disease Control",
+    "subtopic": "Tuberculosis - DOTS",
+    "difficulty": "medium",
+    "bloom": "Application",
+    "competency": "Health Education",
+    "source": "DOH National TB Control Program - NTP Manual of Procedures, 6th Edition",
+    "source_version": "6th Edition (current)",
+    "source_verification_level": "Secondary/summary source",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 2,
+    "stem": "Nurse Cruz is assigned to four clients at the start of the shift. Which client should be assessed first?",
+    "choices": [
+      "A newly admitted client with active pulmonary tuberculosis not yet placed on isolation",
+      "A client due for a scheduled dressing change",
+      "A client with a 3-day-old surgical wound requesting pain medication",
+      "A client asking for discharge instructions"
+    ],
+    "answer": 0,
+    "explanation": "Correct — an unisolated client with active, airborne-transmissible TB poses an immediate exposure risk to other clients and staff and must be assessed and placed on airborne precautions first.",
+    "rationales": [
+      "Correct — an unisolated client with active, airborne-transmissible TB poses an immediate exposure risk to other clients and staff and must be assessed and placed on airborne precautions first.",
+      "A routine, scheduled task without acute risk; can be done after the priority safety issue is addressed.",
+      "Pain is important but not immediately life- or safety-threatening compared to an active airborne infection risk to the unit.",
+      "A non-urgent informational need that can wait until safety priorities are addressed."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Communicable Disease Control - Tuberculosis - Infection Control/Prioritization",
+    "topic_group": "Communicable Disease Control",
+    "subtopic": "Tuberculosis - Infection Control/Prioritization",
+    "difficulty": "medium",
+    "bloom": "Analysis",
+    "competency": "Safe Quality Care",
+    "source": "DOH National TB Control Program; CDC TB Infection Control",
+    "source_version": "Current guidance (2026)",
+    "source_verification_level": "Secondary/summary source",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 3,
+    "stem": "During a home visit, Nurse Bautista assesses a 7-year-old with dengue fever: temperature 38.9°C, delayed capillary refill, and cold, clammy extremities. What is the priority action?",
+    "choices": [
+      "Give paracetamol and recheck temperature in 4 hours",
+      "Encourage oral fluids and monitor at home",
+      "Advise rest and follow up tomorrow",
+      "Refer immediately for emergency care"
+    ],
+    "answer": 3,
+    "explanation": "Correct — per the WHO 2009 dengue classification, cold/clammy extremities and delayed capillary refill (>2 sec) are signs of compensated shock (Dengue Shock Syndrome/Severe Dengue), distinct from and more advanced than the 'warning signs' category (e.g., persistent vomiting, abdominal pain, mucosal bleeding). This requires immediate emergency management.",
+    "rationales": [
+      "Treats the fever but ignores cold, clammy extremities and delayed capillary refill, which are diagnostic criteria for compensated shock (Severe Dengue), not just early warning signs — this delay could be dangerous.",
+      "Appropriate for dengue without warning signs, but this child already meets criteria for compensated shock (narrowed perfusion), which needs urgent evaluation, not home monitoring.",
+      "Delaying care risks progression from compensated to decompensated (hypotensive) shock, which can deteriorate rapidly.",
+      "Correct — per the WHO 2009 dengue classification, cold/clammy extremities and delayed capillary refill (>2 sec) are signs of compensated shock (Dengue Shock Syndrome/Severe Dengue), distinct from and more advanced than the 'warning signs' category (e.g., persistent vomiting, abdominal pain, mucosal bleeding). This requires immediate emergency management."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Communicable Disease Control - Dengue - Warning Signs/Shock",
+    "topic_group": "Communicable Disease Control",
+    "subtopic": "Dengue - Warning Signs/Shock",
+    "difficulty": "hard",
+    "bloom": "Analysis",
+    "competency": "Safe Quality Care",
+    "source": "WHO 2009 Dengue Guidelines (severity classification); DOH Dengue Prevention and Control Program",
+    "source_version": "WHO 2009 classification (current)",
+    "source_verification_level": "Primary source confirmed",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 4,
+    "stem": "During a barangay health station screening, a 50-year-old man with no prior diagnosis of hypertension has a BP of 158/96 mmHg, taken correctly with an appropriately sized cuff. He has no symptoms. What is the most appropriate nursing action?",
+    "choices": [
+      "Diagnose the client with hypertension and start antihypertensive therapy",
+      "Document the finding and schedule a repeat BP measurement on a separate day before referral",
+      "Reassure the client that a single elevated reading is not clinically significant",
+      "Refer immediately to the hospital emergency department"
+    ],
+    "answer": 1,
+    "explanation": "Correct — opportunistic screening protocols call for confirming an elevated reading on a separate occasion before diagnosis, then referring for further evaluation if it remains elevated.",
+    "rationales": [
+      "PhilPEN's task-shifting model does allow trained non-physician health workers to initiate protocol-based antihypertensive management at the primary care level in some cases, so 'outside the nurse's scope' may overstate the restriction — the real issue is whether this specific reading meets the protocol's threshold for same-visit treatment vs. confirmation first. NEEDS SME VERIFICATION against the actual PhilPEN algorithm.",
+      "Correct — opportunistic screening protocols call for confirming an elevated reading on a separate occasion before diagnosis, then referring for further evaluation if it remains elevated.",
+      "A BP of 158/96 mmHg is in the Stage 2 hypertension range and should not be dismissed as insignificant, even without symptoms.",
+      "Emergency referral is reserved for hypertensive urgency/emergency (severely elevated BP with symptoms of end-organ damage), which this client does not show."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Non-Communicable Disease Prevention - Hypertension - Screening Protocol",
+    "topic_group": "Non-Communicable Disease Prevention",
+    "subtopic": "Hypertension - Screening Protocol",
+    "difficulty": "medium",
+    "bloom": "Application",
+    "competency": "Safe Quality Care",
+    "source": "DOH PhilPEN Program",
+    "source_version": "Current guidance (2026)",
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 5,
+    "stem": "Nurse Aquino conducts a diabetes prevention class for adults with risk factors. Which statement by a participant needs correction?",
+    "choices": [
+      "Being overweight increases my risk for type 2 diabetes.",
+      "Regular exercise can help lower my risk.",
+      "Since diabetes runs in my family, there's nothing I can do to prevent it.",
+      "Eating more vegetables and less sugary food can help."
+    ],
+    "answer": 2,
+    "explanation": "Needs correction — genetic predisposition raises risk but does not eliminate the benefit of lifestyle modification; primary prevention can still meaningfully lower risk.",
+    "rationales": [
+      "Correct understanding — obesity is a well-established modifiable risk factor for type 2 diabetes.",
+      "Correct understanding — regular physical activity improves insulin sensitivity and lowers risk.",
+      "Needs correction — genetic predisposition raises risk but does not eliminate the benefit of lifestyle modification; primary prevention can still meaningfully lower risk.",
+      "Correct understanding — dietary modification is a core component of primary prevention."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Non-Communicable Disease Prevention - Diabetes - Primary Prevention",
+    "topic_group": "Non-Communicable Disease Prevention",
+    "subtopic": "Diabetes - Primary Prevention",
+    "difficulty": "easy",
+    "bloom": "Recall/Comprehension",
+    "competency": "Health Education",
+    "source": "DOH PhilPEN Program; CDC Diabetes Prevention",
+    "source_version": "Current guidance (2026)",
+    "source_verification_level": "Secondary/summary source",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 6,
+    "stem": "Nurse Ramos has four home visits scheduled today. Which family should be prioritized?",
+    "choices": [
+      "A family with a member newly diagnosed with pulmonary tuberculosis",
+      "A family with a newborn due for a well-baby check next month",
+      "A family whose child completed all immunizations",
+      "A family requesting a certificate of residency"
+    ],
+    "answer": 0,
+    "explanation": "Correct — a newly diagnosed communicable disease case carries transmission risk to the household and requires prompt case management and contact assessment.",
+    "rationales": [
+      "Correct — a newly diagnosed communicable disease case carries transmission risk to the household and requires prompt case management and contact assessment.",
+      "A scheduled preventive visit that is not yet due; lower urgency than an active communicable disease case.",
+      "No pending health need identified; lowest urgency of the four.",
+      "An administrative request unrelated to an acute health need."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Family Health Nursing - Home Visit Prioritization",
+    "topic_group": "Family Health Nursing",
+    "subtopic": "Home Visit Prioritization",
+    "difficulty": "medium",
+    "bloom": "Analysis",
+    "competency": "Safe Quality Care",
+    "source": "Original (family health nursing prioritization)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 7,
+    "stem": "During a home visit, Nurse Dela Cruz notes an unemployed father, a mother in her third trimester with no prenatal checkups, and a child with no vaccinations. What should the nurse do first?",
+    "choices": [
+      "Refer the family to social services immediately",
+      "Schedule the child's immunizations today",
+      "Report the family to the barangay captain",
+      "Conduct a comprehensive family health assessment"
+    ],
+    "answer": 3,
+    "explanation": "Correct — the nursing process begins with a comprehensive assessment to identify all needs and resources before planning or referring.",
+    "rationales": [
+      "Referral may ultimately be appropriate but should follow a full assessment of the family's needs and resources, not precede it.",
+      "Addresses one need in isolation without first understanding the family's overall situation and priorities.",
+      "Not an appropriate first response; this is a health and social need, not a matter requiring barangay reporting.",
+      "Correct — the nursing process begins with a comprehensive assessment to identify all needs and resources before planning or referring."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Family Health Nursing - At-Risk Families - Nursing Process",
+    "topic_group": "Family Health Nursing",
+    "subtopic": "At-Risk Families - Nursing Process",
+    "difficulty": "medium",
+    "bloom": "Application",
+    "competency": "Safe Quality Care",
+    "source": "Original (family nursing process framework)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 8,
+    "stem": "Two days after a typhoon, Nurse Flores assesses an evacuation center of 300 individuals. She notes one functioning water source, several children with loose stools, and no handwashing stations. Which action should be implemented first?",
+    "choices": [
+      "Set up handwashing and safe water stations at the center",
+      "Conduct active case finding for additional diarrhea cases among residents",
+      "Distribute oral rehydration salts to symptomatic children",
+      "Organize a mobile clinic for chronic disease follow-up"
+    ],
+    "answer": 2,
+    "explanation": "Correct — per the actual-before-potential prioritization principle, the immediate physiologic need of children already showing signs of illness (risk for dehydration) takes priority over measures aimed at preventing additional/future cases.",
+    "rationales": [
+      "An essential outbreak-prevention measure, but it addresses future/potential cases rather than the actual, existing problem in the children already symptomatic.",
+      "Important for understanding outbreak scope, but it does not address the immediate physiologic risk (dehydration) facing children already symptomatic.",
+      "Correct — per the actual-before-potential prioritization principle, the immediate physiologic need of children already showing signs of illness (risk for dehydration) takes priority over measures aimed at preventing additional/future cases.",
+      "Chronic disease follow-up is not the priority in the acute post-disaster period, especially with an active diarrheal illness risk present."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Community Health - Disaster Nursing - Outbreak Response Prioritization",
+    "topic_group": "Community Health - Disaster Nursing",
+    "subtopic": "Outbreak Response Prioritization",
+    "difficulty": "hard",
+    "bloom": "Analysis",
+    "competency": "Safe Quality Care",
+    "source": "Original (disaster nursing framework; actual-vs-potential prioritization principle)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 9,
+    "stem": "A community health nurse discovers that a colleague has been recording immunizations that were never actually administered to several children. What is the most appropriate initial action?",
+    "choices": [
+      "Report the findings directly to the Professional Regulation Commission",
+      "Discuss the concern privately with the colleague, then escalate through the nursing supervisor if unresolved",
+      "Immediately administer the missed immunizations without informing anyone",
+      "Wait until the annual performance review to raise the concern"
+    ],
+    "answer": 1,
+    "explanation": "Reflects a common professional-conduct convention (address directly, then escalate through channels), but we could not confirm this is the specific mandated sequence under RA 9173/PRC Board of Nursing rules for a case involving falsified client records. NEEDS SME/LEGAL VERIFICATION before this is treated as the definitive correct answer — falsified immunization records may warrant more immediate/direct reporting given the patient-safety and documentation-integrity stakes.",
+    "rationales": [
+      "May eventually be necessary if internal channels fail, but going directly to an external regulatory body without first attempting internal resolution skips the appropriate chain of accountability.",
+      "Reflects a common professional-conduct convention (address directly, then escalate through channels), but we could not confirm this is the specific mandated sequence under RA 9173/PRC Board of Nursing rules for a case involving falsified client records. NEEDS SME/LEGAL VERIFICATION before this is treated as the definitive correct answer — falsified immunization records may warrant more immediate/direct reporting given the patient-safety and documentation-integrity stakes.",
+      "Fails to address the underlying falsified documentation or the risk to other children whose records may be affected; the issue must be formally addressed, not quietly corrected.",
+      "Unsafe and unethical practices affecting client welfare should be addressed promptly, not deferred to a routine administrative cycle."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Ethico-Moral Responsibility / Legal - Professional Accountability/Reporting",
+    "topic_group": "Ethico-Moral Responsibility / Legal",
+    "subtopic": "Professional Accountability/Reporting",
+    "difficulty": "medium",
+    "bloom": "Application",
+    "competency": "Ethico-Moral Responsibility / Legal",
+    "source": "PRC Board of Nursing Resolution No. 220, s. 2004 (Code of Ethics for Registered Nurses)",
+    "source_version": "2004 (current)",
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 10,
+    "stem": "Nurse Reyes is asked by a local official why civil registration data matter for computing the maternal mortality ratio. What should the nurse explain?",
+    "choices": [
+      "They provide the record of births and maternal deaths used in the computation",
+      "They are used only for national census planning",
+      "They are optional and rarely used by the PSA",
+      "They replace the need for hospital records entirely"
+    ],
+    "answer": 0,
+    "explanation": "Correct — the PSA computes vital statistics such as MMR primarily from civil registration data on live births and deaths.",
+    "rationales": [
+      "Correct — the PSA computes vital statistics such as MMR primarily from civil registration data on live births and deaths.",
+      "The national census is a separate, periodic data source; civil registration is an ongoing system distinct from census planning.",
+      "Civil registration data are a core, actively used input for PSA vital statistics, not an optional afterthought.",
+      "Civil registration complements, but does not replace, other data sources such as hospital and facility-based records."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Community Health - Vital Statistics - Maternal Mortality Ratio / CRVS",
+    "topic_group": "Community Health - Vital Statistics",
+    "subtopic": "Maternal Mortality Ratio / CRVS",
+    "difficulty": "medium",
+    "bloom": "Application",
+    "competency": "Record Management",
+    "source": "Philippine Statistics Authority - Vital Statistics",
+    "source_version": "2024 data cited",
+    "source_verification_level": "Primary source confirmed",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 11,
+    "stem": "Which nursing action best reflects primary prevention of non-communicable disease?",
+    "choices": [
+      "Managing complications of stroke",
+      "Screening for elevated blood glucose",
+      "Rehabilitating a client after amputation",
+      "Conducting smoking cessation programs"
+    ],
+    "answer": 3,
+    "explanation": "Correct — smoking cessation addresses a risk factor before disease onset, the definition of primary prevention.",
+    "rationales": [
+      "Managing existing complications is tertiary prevention, not primary.",
+      "Screening to detect disease early is secondary prevention.",
+      "Rehabilitation after a complication has already occurred is tertiary prevention.",
+      "Correct — smoking cessation addresses a risk factor before disease onset, the definition of primary prevention."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Levels of Prevention - Primary Prevention - NCD",
+    "topic_group": "Levels of Prevention",
+    "subtopic": "Primary Prevention - NCD",
+    "difficulty": "medium",
+    "bloom": "Application",
+    "competency": "Safe Quality Care",
+    "source": "Original (levels of prevention framework)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 12,
+    "stem": "A nurse teaches barangay health workers about proper nutrition. Which nursing role is demonstrated?",
+    "choices": [
+      "Direct care provider",
+      "Policy advocate",
+      "Health educator",
+      "Researcher"
+    ],
+    "answer": 2,
+    "explanation": "Correct — teaching a structured topic to a group is a health education/teaching role.",
+    "rationales": [
+      "Direct care involves hands-on clinical care to an individual client, not teaching a group.",
+      "Policy advocacy involves influencing laws or institutional decisions, not conducting training.",
+      "Correct — teaching a structured topic to a group is a health education/teaching role.",
+      "Research involves systematic investigation to generate new knowledge, not delivering existing content."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Roles of the Community Health Nurse - Health Educator Role",
+    "topic_group": "Roles of the Community Health Nurse",
+    "subtopic": "Health Educator Role",
+    "difficulty": "easy",
+    "bloom": "Recall/Comprehension",
+    "competency": "Health Education",
+    "source": "Original (roles of the community health nurse)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 13,
+    "stem": "A public health nurse presents local smoking-related morbidity data at a municipal council hearing to support a smoke-free ordinance. Which nursing role is being performed?",
+    "choices": [
+      "Policy advocate",
+      "Direct care provider",
+      "Health educator",
+      "Case manager"
+    ],
+    "answer": 0,
+    "explanation": "Correct — presenting evidence to influence legislation is the nurse acting as a policy advocate.",
+    "rationales": [
+      "Correct — presenting evidence to influence legislation is the nurse acting as a policy advocate.",
+      "No hands-on client care is involved in this scenario.",
+      "Health education targets teaching individuals or groups directly, not influencing legislative bodies.",
+      "Case management involves coordinating an individual client's care across services, not policy work."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Roles of the Community Health Nurse - Policy Advocate Role",
+    "topic_group": "Roles of the Community Health Nurse",
+    "subtopic": "Policy Advocate Role",
+    "difficulty": "medium",
+    "bloom": "Application",
+    "competency": "Legal",
+    "source": "Original (roles of the community health nurse)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 14,
+    "stem": "A barangay-wide walking program and healthy food fair primarily reflect which DOH NCD strategy?",
+    "choices": [
+      "Early case detection",
+      "Rehabilitation services",
+      "Disease surveillance",
+      "Risk factor modification"
+    ],
+    "answer": 3,
+    "explanation": "Correct — programs targeting diet and physical activity address modifiable risk factors, the core of DOH's risk factor modification strategy under PhilPEN.",
+    "rationales": [
+      "Early case detection involves screening to find existing but undiagnosed disease, not lifestyle promotion.",
+      "Rehabilitation addresses recovery after disease/complications have occurred.",
+      "Surveillance involves systematic monitoring of disease patterns, not community lifestyle activities.",
+      "Correct — programs targeting diet and physical activity address modifiable risk factors, the core of DOH's risk factor modification strategy under PhilPEN."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "DOH NCD Strategy - Risk Factor Modification",
+    "topic_group": "DOH NCD Strategy",
+    "subtopic": "Risk Factor Modification",
+    "difficulty": "medium",
+    "bloom": "Application",
+    "competency": "Health Education",
+    "source": "DOH PhilPEN Program / Health Programs directory",
+    "source_version": "Current guidance (2026)",
+    "source_verification_level": "Secondary/summary source",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 15,
+    "stem": "A nurse tracks monthly hypertension case counts across barangays to detect emerging clusters. Which nursing role is being performed?",
+    "choices": [
+      "Direct care",
+      "Surveillance/research",
+      "Health teaching",
+      "Policy advocacy"
+    ],
+    "answer": 1,
+    "explanation": "Correct — systematically tracking disease patterns across a population to detect clusters reflects a surveillance/research role.",
+    "rationales": [
+      "No direct hands-on client care is involved in this data-tracking activity.",
+      "Correct — systematically tracking disease patterns across a population to detect clusters reflects a surveillance/research role.",
+      "No teaching activity is described in this scenario.",
+      "No legislative or policy-influencing action is described."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Roles of the Community Health Nurse - Surveillance/Research Role",
+    "topic_group": "Roles of the Community Health Nurse",
+    "subtopic": "Surveillance/Research Role",
+    "difficulty": "medium",
+    "bloom": "Application",
+    "competency": "Research",
+    "source": "Original (roles of the community health nurse)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 16,
+    "stem": "Teaching foot care to a client with diabetes and peripheral neuropathy, but no active ulcers, is an example of which level of prevention?",
+    "choices": [
+      "Primary prevention",
+      "Health promotion only",
+      "Tertiary prevention",
+      "Secondary prevention"
+    ],
+    "answer": 2,
+    "explanation": "Correct under the classic Leavell & Clark three-level model (this bank's default framework) — since the client already has diabetes with neuropathy, teaching foot care to prevent complications like ulcers is tertiary prevention. NOTE: some PNLE review materials/frameworks classify this differently (e.g., as secondary prevention aimed at preventing complications of an already-diagnosed disease before disability occurs). Lock this to whichever framework your primary PNLE review source uses, and flag for SME confirmation.",
+    "rationales": [
+      "Primary prevention occurs before disease onset; this client already has diabetes with a complication (neuropathy).",
+      "Health promotion alone does not capture the goal of preventing further disability from an existing disease process.",
+      "Correct under the classic Leavell & Clark three-level model (this bank's default framework) — since the client already has diabetes with neuropathy, teaching foot care to prevent complications like ulcers is tertiary prevention. NOTE: some PNLE review materials/frameworks classify this differently (e.g., as secondary prevention aimed at preventing complications of an already-diagnosed disease before disability occurs). Lock this to whichever framework your primary PNLE review source uses, and flag for SME confirmation.",
+      "Secondary prevention involves early detection of disease that is not yet diagnosed; this client's diabetes and neuropathy are already established."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Levels of Prevention - Tertiary Prevention - Diabetes",
+    "topic_group": "Levels of Prevention",
+    "subtopic": "Tertiary Prevention - Diabetes",
+    "difficulty": "hard",
+    "bloom": "Analysis",
+    "competency": "Safe Quality Care",
+    "source": "Original (levels of prevention framework)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 17,
+    "stem": "A nurse computes the number of existing dengue cases in a community at a specific point in time. What is being measured?",
+    "choices": [
+      "Prevalence",
+      "Incidence",
+      "Mortality rate",
+      "Attack rate"
+    ],
+    "answer": 0,
+    "explanation": "Correct — prevalence measures all existing cases (new and pre-existing) at a specific point in time.",
+    "rationales": [
+      "Correct — prevalence measures all existing cases (new and pre-existing) at a specific point in time.",
+      "Incidence measures only new cases occurring within a defined period, not existing cases at a point in time.",
+      "Mortality rate measures deaths from a condition within a population, not case counts.",
+      "Attack rate is a form of incidence typically used in outbreak investigations over a short, defined period."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Epidemiology - Prevalence vs Incidence",
+    "topic_group": "Epidemiology",
+    "subtopic": "Prevalence vs Incidence",
+    "difficulty": "medium",
+    "bloom": "Recall/Comprehension",
+    "competency": "Research",
+    "source": "Original (epidemiology concepts)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 18,
+    "stem": "A household consisting of parents, their children, and a grandparent is classified as what family type?",
+    "choices": [
+      "Nuclear family",
+      "Extended family",
+      "Blended family",
+      "Single-parent family"
+    ],
+    "answer": 1,
+    "explanation": "Correct — a household spanning more than two generations under one roof is defined as an extended family.",
+    "rationales": [
+      "A nuclear family consists only of parents and their children, without other relatives in the household.",
+      "Correct — a household spanning more than two generations under one roof is defined as an extended family.",
+      "A blended family results from remarriage combining children from previous relationships, which is not described here.",
+      "A single-parent family has only one parent present, which is not the case here."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Family Health Nursing - Family Types/Classification",
+    "topic_group": "Family Health Nursing",
+    "subtopic": "Family Types/Classification",
+    "difficulty": "easy",
+    "bloom": "Recall/Comprehension",
+    "competency": "Safe Quality Care",
+    "source": "Original (family health nursing - family types)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 19,
+    "stem": "Which method provides the most objective evaluation of a psychomotor skill taught during health teaching?",
+    "choices": [
+      "Verbal feedback from the learner",
+      "Written examination",
+      "Attendance record",
+      "Return demonstration"
+    ],
+    "answer": 3,
+    "explanation": "Correct — return demonstration objectively confirms psychomotor skill acquisition by having the learner perform the skill directly.",
+    "rationales": [
+      "Self-reported understanding does not confirm the learner can actually perform the skill.",
+      "A written test measures knowledge recall, not the ability to physically perform a skill.",
+      "Attendance shows presence, not learning or skill acquisition.",
+      "Correct — return demonstration objectively confirms psychomotor skill acquisition by having the learner perform the skill directly."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Health Education - Evaluation of Learning",
+    "topic_group": "Health Education",
+    "subtopic": "Evaluation of Learning",
+    "difficulty": "easy",
+    "bloom": "Analysis",
+    "competency": "Health Education",
+    "source": "Original (health education/evaluation principles)",
+    "source_version": null,
+    "source_verification_level": "General knowledge - flagged for SME review",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  },
+  {
+    "source_id": 20,
+    "stem": "Empowering community members to identify and act on their own health needs reflects which principle of Primary Health Care?",
+    "choices": [
+      "Equitable distribution",
+      "Appropriate technology",
+      "Community participation",
+      "Intersectoral collaboration"
+    ],
+    "answer": 2,
+    "explanation": "Correct — community participation empowers people to engage in decisions about their own health, a core PHC principle reaffirmed in the Declaration of Astana.",
+    "rationales": [
+      "Equitable distribution refers to fair access to health resources and services, not community involvement in decision-making.",
+      "Appropriate technology refers to using cost-effective, acceptable methods suited to local resources, not community empowerment specifically.",
+      "Correct — community participation empowers people to engage in decisions about their own health, a core PHC principle reaffirmed in the Declaration of Astana.",
+      "Intersectoral collaboration refers to cooperation across sectors (health, education, agriculture, etc.), not community self-determination specifically."
+    ],
+    "component": "Nursing Practice I",
+    "topic": "Community Health - Primary Health Care - PHC Principles - Community Participation",
+    "topic_group": "Community Health - Primary Health Care",
+    "subtopic": "PHC Principles - Community Participation",
+    "difficulty": "medium",
+    "bloom": "Application",
+    "competency": "Safe Quality Care",
+    "source": "WHO Declaration of Astana (2018)",
+    "source_version": "2018 (reaffirmed, current)",
+    "source_verification_level": "Primary source confirmed",
+    "reviewer_status": "Pending RN Review",
+    "last_verified": null,
+    "date_added": "2026-08-07"
+  }
+]
