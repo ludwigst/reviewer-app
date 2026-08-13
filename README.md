@@ -41,13 +41,27 @@ Skills live in `.agents/skills/` (lockfile: `skills-lock.json`). Claude Code ena
 
 Progress is cached in `localStorage` and synced to `public.reviewer_saves`. The quiz bank lives in `public.questions`.
 
-1. Confirm `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` in `.env.local`.
-2. In the [SQL Editor](https://supabase.com/dashboard/project/ljkxgryzrfunlbnbymga/sql/new), run these migrations in order:
-   - `supabase/migrations/20260813130532_reviewer_saves.sql`
-   - `supabase/migrations/20260813130931_questions.sql` (creates `questions` and seeds 20 NLE Nursing Practice I items from `data/nursing_question_bank.xlsx`)
-3. Reload the app — Practice should list **Nursing Practice I**. Table Editor should show 20 `questions` rows.
+### Apply schema with the CLI
 
-Until those migrations are applied, the app still works: progress stays local, and the 20 nursing items load from `src/data/nursing-questions.json`. Sync/load errors log `Supabase … skipped` in the browser console.
+The publishable key cannot create tables. From this repo:
+
+```bash
+export SUPABASE_ACCESS_TOKEN=sbp_...   # https://supabase.com/dashboard/account/tokens
+export SUPABASE_DB_PASSWORD=...        # Project Settings → Database
+npm run db:link
+npm run db:push
+```
+
+That applies:
+
+- `supabase/migrations/20260813130532_reviewer_saves.sql`
+- `supabase/migrations/20260813130931_questions.sql` (creates `questions` and seeds 20 NLE Nursing Practice I items)
+
+### SQL Editor fallback
+
+If you prefer the dashboard, run those two files in the [SQL Editor](https://supabase.com/dashboard/project/ljkxgryzrfunlbnbymga/sql/new).
+
+Until migrations are applied, the app still works: progress stays local, and the 20 nursing items load from `src/data/nursing-questions.json`. Sync/load errors log `Supabase … skipped` in the browser console.
 
 ## Run
 
