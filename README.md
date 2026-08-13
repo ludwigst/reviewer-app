@@ -26,6 +26,17 @@ GEMINI_API_KEY=your_key_here
 
 `.env.example` already includes the Supabase URL and publishable key.
 
+## Agent plugins
+
+Vercel plugin (project-scoped) plus copied skills for Cursor / Claude Code:
+
+```bash
+npx plugins add vercel/vercel-plugin
+npx skills add vercel/vercel-plugin -y
+```
+
+Skills live in `.agents/skills/` (lockfile: `skills-lock.json`). Claude Code enables the plugin via `.claude/settings.json`.
+
 ## Supabase
 
 Progress is cached in `localStorage` and synced to `public.reviewer_saves`. The quiz bank lives in `public.questions`.
